@@ -6,8 +6,6 @@ import { Modal } from './components/Modal';
 import { Swiper } from './components/Swiper';
 import { Tab } from './components/Tab';
 
-document.title = 'Banco Pichincha';
-
 let iteratorTabs = new DOMIterator('[data-tab-content-id]');
 let iteratorModals = new DOMIterator('[data-modal-content-id]');
 let iteratorJumps = new DOMIterator('[data-jump-content-id]');
