@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Product categories</div>
+  <div class="panel-body">
+    <div class="collapse navbar-collapse navbar-ex1-collapse navbar-side-collapse">
+      <ul class="nav navbar-nav side-nav">
+        <li>
+          <a href="javascript:;" data-toggle="collapse" data-target="#women">Women <i class="fa fa-plus"></i></a>
+          <ul id="women" class="collapse collapse-item">
+            {% for  cat, val in productcategories.women %}
+              <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>{{cat}} <span>({{val}})</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" data-toggle="collapse" data-target="#men">Men <i class="fa fa-plus"></i></a>
+          <ul id="men" class="collapse collapse-item">
+            {% for  cat, val in productcategories.men %}
+              <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>{{cat}} <span>({{val}})</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" data-toggle="collapse" data-target="#kids">Kids <i class="fa fa-plus"></i></a>
+          <ul id="kids" class="collapse collapse-item">
+            {% for  cat, val in productcategories.kids %}
+              <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>{{cat}} <span>({{val}})</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a href="javascript:;" data-toggle="collapse" data-target="#babies">Babies <i class="fa fa-plus"></i></a>
+          <ul id="babies" class="collapse collapse-item">
+            {% for  cat, val in productcategories.babies %}
+              <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>{{cat}} <span>({{val}})</span></a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
