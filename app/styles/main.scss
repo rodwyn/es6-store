@@ -1,14 +1,23 @@
 //Bootstrap
 @import 'lib/bootstrap/main';
-
 //Font Awesome
 @import 'lib/font-awesome/main';
-
 //Sprite
 @import 'sprite-base';
-
 //Custom
 @import 'custom/main';
-
 //Components
 @import 'components/main';
+@import 'lib/reset';
+@import 'lib/common';
+@import 'lib/header';
+@import 'lib/main-slider';
+@import 'lib/home';
+@import 'lib/footer-v1';
+@import 'lib/form';
+@import 'lib/modal';
+@import 'lib/products';
+@import 'lib/blog';
+@import 'lib/about-us';
+@import 'lib/steps';
+@import 'lib/user-profile';
