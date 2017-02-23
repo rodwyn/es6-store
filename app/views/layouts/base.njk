@@ -9,7 +9,6 @@
 
 		<title>Tienda - {% block title %}Inicio{% endblock %}</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" /> -->
 
 		<!-- PLUGINS CSS STYLE -->
 		<link href="plugins/jquery-ui/jquery-ui.css" rel="stylesheet" />
@@ -18,8 +17,6 @@
 		<link href="plugins/selectbox/select_option1.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="plugins/rs-plugin/css/settings.css" media="screen" />
 		<link rel="stylesheet" type="text/css" href="plugins/owl-carousel/owl.carousel.css" media="screen" />
-
-		<!-- <link rel="stylesheet" href="css/style.min.css" /> -->
 
 		<!-- GOOGLE FONT -->
 		<link href="https://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel="stylesheet" type="text/css" />
@@ -35,7 +32,6 @@
 	</head>
 	<body  class="body-wrapper">
 
-
 		<div class="main-wrapper">
 			{% include 'partials/header.njk' %}
 
@@ -44,9 +40,9 @@
 			{% include "partials/footer.njk" %}
 		</div>
 
-		{# { % include 'includes/login-modal.html' %}
-		{ % include 'includes/signup-modal.html' %}
-		{ % include 'includes/product-quick-view-modal.html' %} #}
+		{% include 'partials/login-modal.njk' %}
+		{% include 'partials/signup-modal.njk' %}
+		{% include 'partials/product-quick-view-modal.njk' %}
 
 		<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
 
