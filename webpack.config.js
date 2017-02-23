@@ -158,7 +158,10 @@ module.exports = function makeWebpackConfig () {
 			new CopyWebpackPlugin([{
  				from: __dirname + '/app/images/',
 				to: './images/',
- 			}], {
+ 			},{
+			 from: __dirname + '/app/plugins',
+			 to: './plugins/'
+		 }], {
 				ignore: ['sprites/**']
 			})
     );
