@@ -1,0 +1,259 @@
+@import 'partials/mixins';
+@import 'partials/variables';
+@import 'partials/media-query';
+
+$primary-color:#47bac1;
+$primary-color-light:#4dc8cf;
+
+/*=== Blue ===*/
+.top-right .search-box .dropdown-menu li .input-group .form-control:focus,
+.top-right .search-box .dropdown-menu li .input-group .input-group-addon,
+.search-box .input-group .input-group-addon,
+.footer,
+.footer .newsletter .input-group .input-group-addon:hover,
+.tp-caption.rs-caption-4 .btn,
+.filter-area .btn-group .btn-default:hover, 
+.filter-area .btn-group .btn-default.active,
+.product-list-single .media .media-body .btn-group .btn-default:hover, 
+.product-list-single .media .media-body .btn-group .btn-default:focus,
+.cart-list-inner .table-responsive .table thead tr,
+.blog-page .pagination li a:hover,
+.blog-page .pagination li.active a,
+.order-box .table-responsive .table thead tr,
+.order-box .table-responsive .table tbody tr td .btn-default:hover,
+.footer .newsletter .input-group .input-group-addon,
+.tabCommon .nav-tabs > li.active > a, 
+.tabCommon .nav-tabs > li.active > a:focus, 
+.tabCommon .nav-tabs > li.active > a:hover,
+.version2 .box:hover,
+.tp-caption.rs-caption-4 .btn, 
+.bannerV2 .btn, .bannerV3 .btn ,
+.bannerV3 .owl-controls .owl-nav .owl-prev:hover, 
+.bannerV3 .owl-controls .owl-nav .owl-next:hover,
+.dealSlider .product-caption .btn-border,
+.footer.version2 .newsletter .input-group .input-group-addon:hover,
+.dropGeneral.border-color .sbHolder,
+.dropGeneral.colorBg .sbHolder,
+.dropGeneral.border-color .sbHolder,
+.bannerV2 .caption-info-inner{
+  border-color: $primary-color;
+}
+.category-content{
+	border-top-color: $primary-color;
+}
+.top-right .cart-dropdown a, 
+.cart-dropdown a,
+.top-right .cart-dropdown a:hover,
+.top-right .cart-dropdown a ul.dropdown-menu,
+.cart-dropdown a,
+.cart-dropdown a:hover,
+.cart-dropdown a ul.dropdown-menu,
+.cart-dropdown .shop-cart .badge,
+.navbar-default .navbar-header .navbar-toggle,
+.search-box .input-group .input-group-addon,
+.footer .newsletter .input-group .input-group-addon:hover,
+.tp-caption.rs-caption-4 .btn:hover,
+.form-field .btn-primary, .form-body .panel .panel-body .btn-primary, 
+.sign-up .panel .panel-body .btn-primary, 
+.lost-password .panel .panel-body .btn-primary, 
+.logIn .panel .panel-body .btn-primary, 
+.comments-form .btn-primary, 
+#login .modal-dialog .modal-content .modal-body .btn-primary, 
+#signup .modal-dialog .modal-content .modal-body .btn-primary,
+.form-body .panel .panel-heading, 
+.sign-up .panel .panel-heading, 
+.lost-password .panel .panel-heading, 
+.logIn .panel .panel-heading,
+.steps-page form .checkbox-area input[type=checkbox]:not(old):checked + label span,
+.quick-view .modal-dialog .modal-content .modal-body .media .media-body .btn-area .btn-primary, 
+.single-product .media .media-body .btn-area .btn-primary,
+#login .modal-dialog .modal-content .modal-header, 
+#signup .modal-dialog .modal-content .modal-header,
+.side-bar .panel .panel-heading,
+.filter-area .btn-group .btn-default:hover, 
+.filter-area .btn-group .btn-default.active,
+.product-list-single .media .media-body .btn-group .btn-default:hover, 
+.product-list-single .media .media-body .btn-group .btn-default:focus,
+.cart-list-inner .table-responsive .table thead tr th, 
+.order-box .table-responsive .table thead tr th,
+.cart-list-inner .check-btn-area .btn-primary,
+.notFound .btn-default,
+.blog-page .pagination li a:hover,
+.blog-page .pagination li.active a,
+.steps-wrapper .inner-wrapper .well .pager li a,
+.progress-wizard .progress-wizard-step .progress-wizard-dot,
+.progress-wizard .progress-wizard-step .progress .progress-bar,
+.setp5 .thanks-content .thanks-inner .well,
+.user-profile .btn-group a:hover, 
+.user-profile .btn-group a.active,
+.user-profile .inner-wrapper .list-inline li .btn-lg:hover,
+.user-profile .inner-wrapper.singleOrder .btn-group .btn-default,
+.order-box .table-responsive .table tbody tr td .btn-default:hover,
+.profile .thumbnail .caption .btn-primary, 
+.profile .form-horizontal .form-group .btn-primary,
+.count-down #simple_timer .table-cell .tab-val,
+.about-us-info .list-unstyled li:before ,
+.steps-wrapper .inner-wrapper .well .pager li a:hover ,
+.steps-wrapper .inner-wrapper .well .pager li.previous a:hover,
+.bannerV2 .border,
+.bannerV2 .slider-button a.btn,
+.version2 .imageBox .product-image .product-masking ul li a:hover, 
+.version2 .white-section .featured-products .slide .product-image .product-masking ul li a:hover, 
+.white-section .featured-products .version2 .slide .product-image .product-masking ul li a:hover, 
+.version2 .main-content .featured-products .slide .product-image .product-masking ul li a:hover, 
+.main-content .featured-products .version2 .slide .product-image .product-masking ul li a:hover, 
+.version2 .products-content .product-box .product-image .product-masking ul li a:hover, 
+.products-content .version2 .product-box .product-image .product-masking ul li a:hover,
+.bannerV3 .slide .product-caption .offer,
+.tp-caption.rs-caption-4 .btn:hover, 
+.bannerV2 .btn:hover, .bannerV3 .btn:hover,
+.bannerV3 .owl-controls .owl-nav .owl-prev:hover, 
+.bannerV3 .owl-controls .owl-nav .owl-next:hover,
+.dealSlider .imageBox:hover .product-caption .btn-border, 
+.dealSlider .white-section .featured-products .slide:hover .product-caption .btn-border, 
+.white-section .featured-products .dealSlider .slide:hover .product-caption .btn-border, 
+.dealSlider .main-content .featured-products .slide:hover .product-caption .btn-border, 
+.main-content .featured-products .dealSlider .slide:hover .product-caption .btn-border, 
+.dealSlider .products-content .product-box:hover .product-caption .btn-border, 
+.products-content .dealSlider .product-box:hover .product-caption .btn-border,
+.navTop .cart-dropdown > a i,
+.nav-category ,
+.sticker,
+.top-right .cart-dropdown ul.dropdown-menu, 
+.cart-dropdown ul.dropdown-menu,
+.footer.version2 .newsletter .input-group .input-group-addon:hover,
+.accordionCommon .panel-heading,
+.dropGeneral.colorBg .sbHolder,
+.bannerV2 .fullscreenbanner-container .fullscreenbanner-bg{
+  background-color: $primary-color;
+}
+.navbar-default .navbar-collapse li a:hover, 
+.navbar-default .navbar-collapse li a.focus,
+.navbar-default .navbar-collapse li.dropdown .dropdown-menu li a:hover,
+.navbar-default .navbar-collapse li.active a,
+.navbar-default .navbar-collapse li.active a:focus, 
+.navbar-default .navbar-collapse li.active a:hover,
+.navbar-default .navbar-collapse li.active.dropdown .dropdown-menu li a:hover,
+.navbar-default .navbar-collapse li.dropdown.open a:hover, 
+.navbar-default .navbar-collapse li.dropdown.open a.focus,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:focus, 
+.navbar-default .navbar-nav > .open > a:hover,
+.footer .newsletter .input-group .input-group-addon i,
+.tp-caption.rs-caption-4 .btn i,
+.imageBox .product-image .product-masking ul li a:hover i, 
+.white-section .featured-products .slide .product-image .product-masking ul li a:hover i, 
+.main-content .featured-products .slide .product-image .product-masking ul li a:hover i, 
+.products-content .product-box .product-image .product-masking ul li a:hover i,
+.masking-btn:hover, 
+.white-section .featured-collection .thumbnail .image-wrapper .masking .view-btn:hover, 
+.main-content .featured-collection .thumbnail .image-wrapper .masking .view-btn:hover, 
+.product-list-single .media .pull-left .masking-image .view-btn:hover, 
+.white-section .featured-collection .thumbnail:hover .caption h4, 
+.main-content .featured-collection .thumbnail:hover .caption h4,
+.form-field .btn-link, 
+.form-body .panel .panel-body .btn-link, 
+.sign-up .panel .panel-body .btn-link, 
+.lost-password .panel .panel-body .btn-link, 
+.logIn .panel .panel-body .btn-link, 
+.comments-form .btn-link, 
+#login .modal-dialog .modal-content .modal-body .btn-link, 
+#signup .modal-dialog .modal-content .modal-body .btn-link,
+.steps-page form .checkbox-area input[type=checkbox]:not(old):checked + label span,
+.sub-list-item:hover, 
+.navbar-side-collapse .side-nav li .collapse-item li a:hover, 
+.sidebar-list li a:hover,
+.navbar-side-collapse .side-nav li a:hover,
+.filter-normal .list-unstyled li a:hover,
+.product-list-single .media:hover .media-heading, 
+.product-list-single .media:hover h3, 
+.cart-list-inner .table-responsive .table tbody tr td .close, 
+.order-box.my-address .table-responsive .table tbody tr td .close,
+.notFound h1,
+.comments-area .media .media-body .btn-link:hover,
+.user-profile .inner-wrapper h3 span,
+.order-box .table-responsive .table tbody tr td:first-child,
+.order-box.my-address.wish-list .table-responsive .table tbody tr td:nth-child(4),
+.navbar-default .navbar-collapse li.dropdown .dropdown-menu li.active a,
+.box i,
+.copy-right.version2 p a:hover,
+.bannerV3 .slide .slider-title h3 span,
+.bannerV3 .slide .product-caption .offer-price,
+.bannerV3 .owl-controls .owl-nav .owl-prev, 
+.bannerV3 .owl-controls .owl-nav .owl-next,
+.dealSlider .productDeal h3 span,
+.imageBox .product-caption .offer-price, 
+.white-section .featured-products .slide .product-caption .offer-price, 
+.main-content .featured-products .slide .product-caption .offer-price, 
+.products-content .product-box .product-caption .offer-price,
+.dealSlider .imageBox:hover .productDeal .rating, 
+.dealSlider .white-section .featured-products .slide:hover .productDeal .rating, 
+.white-section .featured-products .dealSlider .slide:hover .productDeal .rating, 
+.dealSlider .main-content .featured-products .slide:hover .productDeal .rating, 
+.main-content .featured-products .dealSlider .slide:hover .productDeal .rating, 
+.dealSlider .products-content .product-box:hover .productDeal .rating, 
+.products-content .dealSlider .product-box:hover .productDeal .rating,
+.testimonial-inner .testimonialText .product-rating,
+.nav-category .dropdown-menu li.active a,
+.nav-category .dropdown-menu li a:hover,
+.nav-category .dropdown-menu li a:hover i,
+.category-top .category-menu h2,
+.category-menu ul li:hover a,
+.tp-caption.rs-caption-4 .btn i, 
+.bannerV2 .btn i, .bannerV3 .btn i,
+.dealSlider .product-caption .btn-border i{
+  color: $primary-color;
+}
+
+.step-drop .sbOptions a:hover,
+.filter-area .sbOptions a:hover,
+.quick-drop .sbOptions a:hover,
+.slider-captionV4 .tp-caption.rs-caption-2 small,
+.dropGeneral .sbOptions a:hover{
+  color: $primary-color !important;
+}
+.masking-hover, 
+.imageBox .product-image .product-masking, 
+.white-section .featured-products .slide .product-image .product-masking, 
+.main-content .featured-products .slide .product-image .product-masking, 
+.products-content .product-box .product-image .product-masking, 
+.white-section .featured-collection .thumbnail .image-wrapper .masking, 
+.main-content .featured-collection .thumbnail .image-wrapper .masking, 
+.product-list-single .media .pull-left .masking-image{
+	background-color: rgba($primary-color, .9);
+}
+.fullscreenbanner-container .tp-bullets.preview4{
+	@include linear-gradient(to bottom, $primary-color-light 0%, $primary-color-light 50%, $primary-color 51%, $primary-color 100%);
+}
+.fullscreenbanner-container .tp-bullets.preview4::before{
+	@include linear-gradient(135deg, $primary-color-light 0%, $primary-color-light 50%, $primary-color 51%, $primary-color 100%);
+}
+.fullscreenbanner-container .tp-bullets.preview4::after{
+	@include linear-gradient(135deg, $primary-color-light 0%, $primary-color-light 50%, $primary-color 51%, $primary-color 100%);
+}
+.dark-section{
+	.btn-default{
+		@include add-border(2px, rgba($primary-color, .5), all);
+		&:hover{
+			background-color: $primary-color;
+			border-color: $primary-color;
+		}
+	}
+}
+.cart-list-inner .update-area .btn:hover {
+    background-color: $primary-color;
+    border-color: $primary-color;
+}
+
+.form-field .btn-link:hover, 
+.form-body .panel .panel-body .btn-link:hover, 
+.sign-up .panel .panel-body .btn-link:hover, 
+.lost-password .panel .panel-body .btn-link:hover, 
+.logIn .panel .panel-body .btn-link:hover, 
+.comments-form .btn-link:hover, 
+#login .modal-dialog .modal-content .modal-body .btn-link:hover, 
+#signup .modal-dialog .modal-content .modal-body .btn-link:hover {
+    color:$primary-color-light;
+}
+
+
