@@ -321,6 +321,13 @@ jQuery(document).ready(function() {
 	})(jQuery);
 });
 
+$(".quick-view").on('show.bs.modal', function (e) {
+	$(this).find("img").attr("src", $(e.relatedTarget).attr('data-image'));
+	$(this).find("h2").html($(e.relatedTarget).attr('data-name'));
+	$(this).find("h3").html($(e.relatedTarget).attr('data-price'));
+	$(this).find("p").html($(e.relatedTarget).attr('data-name') + " is just what you're looking for.");
+})
+
 jQuery(document).ready(function() {
 	$(".quick-view .btn-block").click(function(){
         $(".quick-view").modal("hide");
