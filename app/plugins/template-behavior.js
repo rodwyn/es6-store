@@ -353,6 +353,38 @@ jQuery(document).ready(function() {
     });
 });
 
+// cart
+
+jQuery(document).ready(function() {
+	"use strict";
+
+	var cartList = [];
+
+	localStorage.setItem('cartList', JSON.stringify(cartList));
+	localStorage.setItem('cartAmount', 0);
+
+	$("#cart-amount").html(localStorage.getItem('cartAmount'));
+
+	$(".add-cart").click(function(e){
+		e.preventDefault();
+
+		var product = {
+			img: $(this).data('image'),
+			product: $(this).data('name'),
+			quantity: 1,
+			price: $(this).data('price')
+		};
+
+		var cart = JSON.parse(localStorage.getItem('cartList'));
+
+		cart.push(product)
+
+		localStorage.setItem('cartList', JSON.stringify(cart));
+
+		console.log(JSON.parse(localStorage.getItem('cartList')));
+  });
+});
+
 //============================== ACCORDION OR COLLAPSE ICON CHANGE =========================
 
     var allIcons = $("#faqAccordion .panel-heading i.fa");
