@@ -1,0 +1,77 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+<section class="main-content clearfix about-us-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page-header">
+          <h3>Suspendisse suscipit vestibulum dignissim</h3>
+        </div>
+      </div>
+      <div class="col-sm-6 col-sm-push-6 col-xs-12">
+        <img src="../images/about-us/title-img.jpg" alt="about-us-img" />
+      </div>
+      <div class="col-sm-6 col-sm-pull-6 col-xs-12">
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Mauris lobortis augue ex, ut faucibus nisi mollis ac. Sed volutpat scelerisque ex ut ullamcorper. Cras at velit quis sapien dapibus laoreet a id odio. Sed sit amet accumsan ante, eu congue metus. Aenean eros tortor, cursus quis feugiat sed, vestibulum vel purus. Etiam aliquam turpis quis blandit finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor placerat lectus, facilisis ornare leo tincidunt vel. Duis rutrum felis felis, eget malesuada massa tincidunt a.</p>
+        <ul class="list-unstyled">
+          <li>Neque porro quisquam est,</li>
+          <li>qui dolorem ipsum quia dolor sit amet, </li>
+          <li>consectetur, adipisci velit, sed quia</li>
+          <li>non numquam eius modi tempora incidunt </li>
+          <li>ut labore et dolore magnam aliquam</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark-section clearfix">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Our Store Locations</h3>
+      </div>
+      {% for store in stores %}
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="thumbnail">
+            <div class="caption">
+              <h5>{{ store.city }}</h5>
+              <address>
+                {{ store.address | safe }}
+              </address>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="col-xs-12">
+        <button type="button" class="btn btn-default">Check more</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="white-section clearfix about-people">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>Our Peoples</h3>
+      </div>
+      {% for people in peoples %}
+        <div class="col-sm-3 col-xs-12">
+          <div class="thumbnail">
+            <img src="{{ people.img }}" alt="people-image" />
+            <div class="caption">
+              <h5>{{ people.name }}</h5>
+              <p>({{ people.job }})</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% endblock %}
