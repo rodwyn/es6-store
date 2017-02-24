@@ -1,0 +1,43 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+<section class="main-content clearfix blog-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9 col-sm-8 col-xs-12">
+        <div class="row">
+          {% include "partials/posts.njk" %}
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="text-left">
+              <ul class="pagination">
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                  <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-4 col-xs-12 side-bar">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" />
+          <a href="#" class="input-group-addon" id="basic-addon2"><i class="fa fa-search"></i></a>
+        </div>
+        {% include 'partials/product-categories.njk' %}
+        {% include 'partials/recent-post.njk' %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
