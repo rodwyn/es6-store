@@ -358,12 +358,13 @@ jQuery(document).ready(function() {
 jQuery(document).ready(function() {
 	"use strict";
 
-	var cartList = [];
+	if (localStorage.getItem('cartList') === null) {
+		var cartList = [];
+		localStorage.setItem('cartList', JSON.stringify(cartList));
+	}
 
-	localStorage.setItem('cartList', JSON.stringify(cartList));
-	localStorage.setItem('cartAmount', 0);
-
-	$("#cart-amount").html(localStorage.getItem('cartAmount'));
+	setCartAmount();
+	refreshCartResume();
 
 	$(".add-cart").click(function(e){
 		e.preventDefault();
@@ -381,8 +382,51 @@ jQuery(document).ready(function() {
 
 		localStorage.setItem('cartList', JSON.stringify(cart));
 
-		console.log(JSON.parse(localStorage.getItem('cartList')));
+		setCartAmount();
+		refreshCartResume();
+
+		window.location.href = 'cart-page.html';
   });
+
+	function setCartAmount() {
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		var total = 0
+
+		for (var i in cartItems) {
+			total += (cartItems[i].price * cartItems[i].quantity);
+		}
+
+		localStorage.setItem('cartAmount', total);
+
+		$('#cart-amount').html(localStorage.getItem('cartAmount'));
+	}
+
+	function refreshCartResume() {
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		var cartResume = ( cartItems.length > 0 )?'<li>Item(s) in your cart</li>':'';
+
+		for (var i in cartItems) {
+			cartResume += `<li>
+											<a href="#">
+												<div class="media">
+													<img class="media-left media-object" src="`+ cartItems[i].img +`" alt="cart-Image" />
+													<div class="media-body">
+														<h5 class="media-heading">`+ cartItems[i].product +` <br /><span>`+ cartItems[i].quantity +` X $`+ cartItems[i].price +`</span></h5>
+													</div>
+												</div>
+											</a>
+										</li>`;
+		}
+
+		cartResume += ( cartItems.length > 0 )? `<li>
+										<div class="btn-group" role="group" aria-label="...">
+											<button type="button" class="btn btn-default" onclick="location.href='cart-page.html';">Shopping Cart</button>
+											<button type="button" class="btn btn-default" onclick="location.href='checkout-step-1.html';">Checkout</button>
+										</div>
+									</li>`:'';
+
+		$('#cart-resume').html(cartResume);
+	}
 });
 
 //============================== ACCORDION OR COLLAPSE ICON CHANGE =========================
