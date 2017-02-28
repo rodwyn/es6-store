@@ -357,6 +357,8 @@ jQuery(document).ready(function() {
 
 jQuery(document).ready(function() {
 	"use strict";
+//borrar
+	//localStorage.clear();
 
 	if (localStorage.getItem('cartList') === null) {
 		var cartList = [];
@@ -365,28 +367,100 @@ jQuery(document).ready(function() {
 
 	setCartAmount();
 	refreshCartResume();
+	loadCartList();
 
 	$(".add-cart").click(function(e){
 		e.preventDefault();
 
-		var product = {
-			img: $(this).data('image'),
-			product: $(this).data('name'),
-			quantity: 1,
-			price: $(this).data('price')
-		};
-
 		var cart = JSON.parse(localStorage.getItem('cartList'));
 
-		cart.push(product)
+		if (!isInProductList($(this).data('code'))) {
+			var product = {
+				code:$(this).data('code'),
+				img: $(this).data('image'),
+				product: $(this).data('name'),
+				quantity: 1,
+				price: $(this).data('price')
+			};
 
-		localStorage.setItem('cartList', JSON.stringify(cart));
+			cart.push(product);
+			localStorage.setItem('cartList', JSON.stringify(cart));
+		}
 
 		setCartAmount();
 		refreshCartResume();
 
 		window.location.href = 'cart-page.html';
   });
+
+	$('.product-quantity').bind('keyup', function() {
+		if ($(this).val() > 0 && $(this).val() <= 5) {
+			var cartItems = JSON.parse(localStorage.getItem('cartList'));
+			var code = $(this).data('code');
+			var quantity = $(this).val();
+
+			cartItems.filter(function(element) {
+				if (element.code === code) {
+					element.quantity = quantity;
+					localStorage.setItem('cartList', JSON.stringify(cartItems));
+					setCartAmount();
+					refreshCartResume();
+					updateProductSubtotal(element.code, element.quantity, element.price);
+				}
+			});
+		}
+	});
+
+	function updateProductSubtotal(code, quantity, price) {
+		var subtotal = (quantity*price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+		$('.product-subtotal[data-code="'+ code +'"]').html(subtotal);
+	}
+
+	function loadCartList() {
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		var cartList = '';
+
+		for (var i in cartItems) {
+			var subtotal = (cartItems[i].quantity * cartItems[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+			cartList += `<tr>
+				<td class="col-xs-2">
+					<button type="button" class="close remove-product" data-code="`+ cartItems[i].code +`" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<span class="cart-image"><img src="`+ cartItems[i].img +`" alt="image" /></span>
+				</td>
+				<td class="col-xs-4">`+ cartItems[i].product +`</td>
+				<td class="col-xs-2">$ `+ cartItems[i].price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') +`</td>
+				<td class="col-xs-2"><input type="number" min="1" max="5" data-code="`+ cartItems[i].code +`" placeholder="`+ cartItems[i].quantity +`" class="product-quantity" /></td>
+				<td class="col-xs-2">$<span class="product-subtotal" data-code="`+ cartItems[i].code +`">`+ subtotal +`</span></td>
+			</tr>`;
+		}
+
+		$('.cart-list-body').html(cartList);
+	}
+
+	$('.remove-product').click(function() {
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		var code = $(this).data('code');
+		var productRemoved = cartItems.filter(function(element) {
+			return element.code !== code;
+		});
+		localStorage.setItem('cartList', JSON.stringify(productRemoved));
+		$(this).closest('tr').remove();
+		setCartAmount();
+		refreshCartResume();
+	});
+
+	function isInProductList(code) {
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		for (var i in cartItems) {
+			if (cartItems[i].code === code) {
+				cartItems[i].quantity =  cartItems[i].quantity+1;
+				localStorage.setItem('cartList', JSON.stringify(cartItems));
+				return true;
+			}
+		}
+		return false;
+	}
 
 	function setCartAmount() {
 		var cartItems = JSON.parse(localStorage.getItem('cartList'));
