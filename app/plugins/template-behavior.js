@@ -357,17 +357,55 @@ jQuery(document).ready(function() {
 
 jQuery(document).ready(function() {
 	"use strict";
+
+	var taxPercent = 0.16;
+	var coupons = [
+		{
+			name: 'EMPLOYEECUOPON',
+			discount: 10
+		},
+		{
+			name: 'TAXFREE',
+			discount: 16
+		},
+		{
+			name: 'SPECIALCOUPON',
+			discount: 20
+		}
+	];
 //borrar
 	//localStorage.clear();
+	 localStorage.removeItem('isCouponApplied');
 
 	if (localStorage.getItem('cartList') === null) {
 		var cartList = [];
 		localStorage.setItem('cartList', JSON.stringify(cartList));
 	}
 
+	if (localStorage.getItem('isCouponApplied') === null) {
+		localStorage.setItem('isCouponApplied', false);
+	}
+
+	if (localStorage.getItem('couponPercent') === null) {
+		localStorage.setItem('couponPercent', 0);
+	}
+
 	setCartAmount();
 	refreshCartResume();
 	loadCartList();
+
+	$('.apply-coupon').click(function(e) {
+		e.preventDefault();
+		var coupon = $('#coupon-name').val();
+		if (Number(localStorage.getItem('couponPercent')) === 0 && coupon !== '') {
+			coupons.filter(function(element) {
+				if (element.name === coupon) {
+					localStorage.setItem('couponPercent', element.discount);
+					setCartAmount();
+				}
+			});
+		}
+	});
 
 	$(".add-cart").click(function(e){
 		e.preventDefault();
@@ -462,17 +500,30 @@ jQuery(document).ready(function() {
 		return false;
 	}
 
-	function setCartAmount() {
+	function setCartAmount(discountPercent) {
 		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+		var discountPercent = Number(localStorage.getItem('couponPercent'));
 		var total = 0
 
 		for (var i in cartItems) {
 			total += (cartItems[i].price * cartItems[i].quantity);
 		}
 
-		localStorage.setItem('cartAmount', total);
+		var tax = total * taxPercent;
+		var subtotal = total - tax;
 
-		$('#cart-amount').html(localStorage.getItem('cartAmount'));
+		if ( discountPercent > 0 ) {
+			var discount = total * (discountPercent / 100);
+			total = total - discount;
+			$('.cart-discount').html('-$' + discount.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+			localStorage.setItem('isCouponApplied', true);
+		}
+
+		$('.cart-subtotal').html('$' + subtotal.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+		$('.cart-tax').html('$' + tax.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+		$('.cart-amount').html('$' +  total.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+
+		localStorage.setItem('cartAmount', total);
 	}
 
 	function refreshCartResume() {

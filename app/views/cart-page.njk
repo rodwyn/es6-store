@@ -24,17 +24,19 @@
             </div>
             <div class="update-area">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="I have a discount coupon" aria-describedby="basic-addon2" />
-                <a href="#" class="btn input-group-addon" id="basic-addon2">apply coupon</a>
+                <input id="coupon-name" type="text" class="form-control" placeholder="I have a discount coupon" aria-describedby="basic-addon2" />
+                <a href="#" class="btn input-group-addon apply-coupon" id="basic-addon2">apply coupon</a>
+                <small>(EMPLOYEECUOPON, TAXFREE, SPECIALCOUPON)</small>
               </div>
               {# <a href="#" class="btn">update cart</a> #}
             </div>
             <div class="total-amount-area">
               <div class="col-sm-4 col-sm-offset-8 col-xs-12">
                 <ul class="list-unstyled">
-                  <li>Sub Total <span>$ 792.00</span></li>
-                  <li>UK Vat <span>$ 18.00</span></li>
-                  <li>Grand Total <span class="grand-total">$ 810.00</span></li>
+                  <li>Sub Total <span class="cart-subtotal"></span></li>
+                  <li>Tax <span class="cart-tax"></span></li>
+                  <li class="cart-discount"></li>
+                  <li>Grand Total <span class="grand-total cart-amount"></span></li>
                 </ul>
               </div>
             </div>
