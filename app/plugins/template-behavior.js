@@ -375,15 +375,11 @@ jQuery(document).ready(function() {
 	];
 //borrar
 	//localStorage.clear();
-	 localStorage.removeItem('isCouponApplied');
+	//localStorage.removeItem('isCouponApplied');
 
 	if (localStorage.getItem('cartList') === null) {
 		var cartList = [];
 		localStorage.setItem('cartList', JSON.stringify(cartList));
-	}
-
-	if (localStorage.getItem('isCouponApplied') === null) {
-		localStorage.setItem('isCouponApplied', false);
 	}
 
 	if (localStorage.getItem('couponPercent') === null) {
