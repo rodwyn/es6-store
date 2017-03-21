@@ -358,6 +358,10 @@ jQuery(document).ready(function() {
 jQuery(document).ready(function() {
 	"use strict";
 
+	dataLayer = [{
+		'pageCategory': 'home'
+	}];
+
 	var taxPercent = 0.16;
 	var coupons = [
 		{
@@ -398,12 +402,69 @@ jQuery(document).ready(function() {
 				if (element.name === coupon) {
 					localStorage.setItem('couponPercent', element.discount);
 					setCartAmount();
+
+					dataLayer.push({
+				    'event': 'promotionClick',
+				    'ecommerce': {
+				      'promoClick': {
+				        'promotions': [
+				         {
+				           'id': coupon,                         // Name or ID is required.
+				           'discount': element.discount
+				         }]
+				      }
+				    }
+				  });
 				}
 			});
 		}
 	});
 
-	$(".add-cart").click(function(e){
+	$('#confirm').click(function(e) {
+		e.preventDefault();
+
+		localStorage.clear();
+
+		document.location = 'checkout-complete.html';
+	});
+
+	$('#checkout').click(function(e) {
+		e.preventDefault();
+
+		var cartItems = JSON.parse(localStorage.getItem('cartList'));
+
+		dataLayer.push({
+	    'event': 'checkout',
+	    'ecommerce': {
+	      'checkout': {
+	        'actionField': {'step': 1},
+	        'products': cartItems
+	     }
+	   },
+	   'eventCallback': function() {
+	      // document.location = 'checkout-step-1.html';
+	   }
+	  });
+
+		console.log(dataLayer);
+	});
+
+	$('.item-preview').click(function() {
+		dataLayer.push({
+		  'ecommerce': {
+		    'detail': {
+		      'actionField': {'list': 'Apparel Gallery'},    // 'detail' actions have an optional list property.
+		      'products': [{
+		        'name': $(this).data('name'),         // Name or ID is required.
+		        'id': $(this).data('code'),
+		        'price': $(this).data('price')
+		       }]
+		     }
+		   }
+		});
+	});
+
+	$('.add-cart').click(function(e){
 		e.preventDefault();
 
 		var cart = JSON.parse(localStorage.getItem('cartList'));
@@ -424,14 +485,29 @@ jQuery(document).ready(function() {
 		setCartAmount();
 		refreshCartResume();
 
-		window.location.href = 'cart-page.html';
+		dataLayer.push({
+		  'event': 'addToCart',
+		  'ecommerce': {
+		    'currencyCode': 'MX',
+		    'add': {                                // 'add' actionFieldObject measures.
+		      'products': [{                        //  adding a product to a shopping cart.
+						'name': $(this).data('name'),                      // Name or ID is required.
+	          'id': $(this).data('code'),
+	          'price': $(this).data('price'),
+		        'quantity': 1
+		       }]
+		    }
+		  }
+		});
+
+		document.location = 'cart-page.html'
   });
 
 	$('.product-quantity').bind('keyup', function() {
 		if ($(this).val() > 0 && $(this).val() <= 5) {
 			var cartItems = JSON.parse(localStorage.getItem('cartList'));
 			var code = $(this).data('code');
-			var quantity = $(this).val();
+			var quantity = Number($(this).val());
 
 			cartItems.filter(function(element) {
 				if (element.code === code) {
@@ -455,17 +531,29 @@ jQuery(document).ready(function() {
 		var cartList = '';
 
 		for (var i in cartItems) {
-			var subtotal = (cartItems[i].quantity * cartItems[i].price).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+			var subtotal = (cartItems[i].quantity * cartItems[i].price).toFixed(2)
+				.replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
 
 			cartList += `<tr>
 				<td class="col-xs-2">
-					<button type="button" class="close remove-product" data-code="`+ cartItems[i].code +`" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<span class="cart-image"><img src="`+ cartItems[i].img +`" alt="image" /></span>
+					<button type="button" class="close remove-product"
+					data-code="`+ cartItems[i].code +`" data-name="`+ cartItems[i].product
+					+`" data-price="`+ cartItems[i].price +`" data-quantity="`
+					+ cartItems[i].quantity
+					+`" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span></button>
+					<span class="cart-image"><img src="`+ cartItems[i].img +`"
+					alt="image" /></span>
 				</td>
 				<td class="col-xs-4">`+ cartItems[i].product +`</td>
-				<td class="col-xs-2">$ `+ cartItems[i].price.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') +`</td>
-				<td class="col-xs-2"><input type="number" min="1" max="5" data-code="`+ cartItems[i].code +`" placeholder="`+ cartItems[i].quantity +`" class="product-quantity" /></td>
-				<td class="col-xs-2">$<span class="product-subtotal" data-code="`+ cartItems[i].code +`">`+ subtotal +`</span></td>
+				<td class="col-xs-2">$ `+ cartItems[i].price.toFixed(2)
+				.replace(/(\d)(?=(\d{3})+\.)/g, '$1,') +`</td>
+				<td class="col-xs-2"><input type="number" min="1" max="5"
+				data-code="`+ cartItems[i].code +`"
+				placeholder="`+ cartItems[i].quantity +`"
+				class="product-quantity" /></td>
+				<td class="col-xs-2">$<span class="product-subtotal"
+				data-code="`+ cartItems[i].code +`">`+ subtotal +`</span></td>
 			</tr>`;
 		}
 
@@ -482,6 +570,20 @@ jQuery(document).ready(function() {
 		$(this).closest('tr').remove();
 		setCartAmount();
 		refreshCartResume();
+
+		dataLayer.push({
+		  'event': 'removeFromCart',
+		  'ecommerce': {
+		    'remove': {                               // 'remove' actionFieldObject measures.
+		      'products': [{                          //  removing a product to a shopping cart.
+		          'name': $(this).data('name'),
+		          'id': $(this).data('code'),
+		          'price': $(this).data('price'),
+		          'quantity': $(this).data('quantity')
+		      }]
+		    }
+		  }
+		});
 	});
 
 	function isInProductList(code) {
