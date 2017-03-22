@@ -354,6 +354,98 @@ jQuery(document).ready(function() {
 });
 
 // cart
+function setImpressions() {
+	dataLayer.push({
+	  'ecommerce': {
+	    'impressions': [
+	     {
+	       'name': 'Nike Sportwear',
+	       'id': 1,
+	       'price': 199,
+	       'list': 'Related Products',
+	       'position': 1
+	     },
+	     {
+	       'name': 'Cool Glasses',
+	       'id': 2,
+	       'price': 249,
+	       'list': 'Related Products',
+	       'position': 2
+	     },
+			 {
+	       'name': 'Fresh dress',//data-name="" data-price=""
+	       'id': 3,
+	       'price': 179,
+	       'list': 'Related Products',
+	       'position': 3
+	     },
+			 {
+	       'name': 'Trainning bag',
+	       'id': 4,
+	       'price': 349,
+	       'list': 'Related Products',
+	       'position': 4
+	     },
+			 {
+	       'name': 'NY Cap',
+	       'id': 5,
+	       'price': 120,
+	       'list': 'Related Products',
+	       'position': 5
+	     },
+			 {
+	       'name': 'NIKE trainers',
+	       'id': 6,
+	       'price': 2200,
+	       'list': 'Related Products',
+	       'position': 6
+	     },
+			 {
+	       'name': 'Hipster hat',
+	       'id': 7,
+	       'price': 210,
+	       'list': 'Related Products',
+	       'position': 7
+	     },
+			 {
+	       'name': 'Demin Dress',
+	       'id': 8,
+	       'price': 530,
+	       'list': 'Related Products',
+	       'position': 8
+	     },
+			 {
+	       'name': 'Explorer Dress',
+	       'id': 9,
+	       'price': 350,
+	       'list': 'Related Products',
+	       'position': 9
+	     },
+			 {
+	       'name': 'Green Bikini',
+	       'id': 10,
+	       'price': 290,
+	       'list': 'Related Products',
+	       'position': 10
+	     },
+			 {
+	       'name': 'Black bikini',
+	       'id': 11,
+	       'price': 320,
+	       'list': 'Related Products',
+	       'position': 11
+	     },
+			 {
+	       'name': 'Sun Dress',
+	       'id': 12,
+	       'price': 275,
+	       'list': 'Related Products',
+	       'position': 12
+	     }
+		 ],
+	  }
+	});
+}
 
 jQuery(document).ready(function() {
 	"use strict";
@@ -440,13 +532,8 @@ jQuery(document).ready(function() {
 	        'actionField': {'step': 1},
 	        'products': cartItems
 	     }
-	   },
-	   'eventCallback': function() {
-	      // document.location = 'checkout-step-1.html';
 	   }
 	  });
-
-		console.log(dataLayer);
 	});
 
 	$('.item-preview').click(function() {

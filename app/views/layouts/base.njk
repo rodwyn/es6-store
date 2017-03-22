@@ -38,7 +38,12 @@
 		})(window,document,'script','dataLayer','GTM-ND4ZZH3');</script>
 		<!-- End Google Tag Manager -->
 	</head>
-	<body  class="body-wrapper">
+	{% if productList %}
+		<body class="body-wrapper" onload="setImpressions();">
+	{% else %}
+  	<body class="body-wrapper">
+	{% endif %}
+
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND4ZZH3"
 		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
